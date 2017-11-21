@@ -1,0 +1,557 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td,p,figure,figcaption,button{font-family:'Open Sans', sans-serif;padding:0;margin:0;font-size:inherit;color:inherit;background:transparent;}
+h2{font-size:38px;font-weight:400;font-family:'Montserrat', 'Open Sans', sans-serif;}
+a{text-decoration:none;}
+table{border-spacing:0;}
+fieldset,img,button{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;font-style:normal;}
+strong{font-weight:bold;}
+ol, ul{list-style:none;margin:0;padding:0;}
+caption,th{text-align:left;}
+q:before, q:after{content:'';}
+abbr, acronym{border:0;}
+input{border:0;margin:0;}
+i{font-style:normal;font-weight:bold;}
+a,button,input[type=submit]{cursor:pointer;}
+.clear{clear:both;}
+.clear-right{clear:right;}
+.clear-left{clear:left;}
+
+*::selection{background:rgba(254,215,51,0.6);color:#000000;}
+*::-moz-selection{background:rgba(254,215,51,0.6);color:#000000;}
+*::-webkit-selection{background:rgba(254,215,51,0.6);color:#000000;}
+*::-khtml-selection{background:rgba(254,215,51,0.6);color:#000000;}
+*::ô-selection{background:rgba(254,215,51,0.6);color:#000000;}
+
+@font-face {font-family: 'FontAwesome';
+src: url('../fonts/fontawesome/fontawesome-webfont.eot') format('embedded-opentype'), url('../fonts/fontawesome/fontawesome-webfont.woff'), url('../fonts/fontawesome/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome/fontawesome-webfont.svg') format('svg');font-weight: normal;font-style: normal;}
+/*
+src: url('../fonts/fontawesome/fontawesome-webfont.eot?v=4.4.0');src: url('../fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');font-weight: normal;font-style: normal;}
+*/
+::-webkit-input-placeholder{color:#8f8f8f;font-family:'Open Sans', sans-serif;font-size:16px;font-weight:300;}
+::-moz-placeholder{color:#8f8f8f;font-family:'Open Sans', sans-serif;font-size:16px;font-weight:300;}
+:-ms-input-placeholder{color:#8f8f8f;font-family:'Open Sans', sans-serif;font-size:16px;font-weight:300;}
+input:-moz-placeholder{color:#8f8f8f;font-family:'Open Sans', sans-serif;font-size:16px;font-weight:300;}
+
+strong{font-weight:700!important;}
+input{font-weight:400!important;}
+
+*:focus{outline-style:none!important;}
+
+a{color:inherit;}
+
+a.butt, .search{border-radius:50px;}
+
+a[data-nav]{display:none;position:fixed;top:8px;right:20px;background:#0e86e3;z-index:100;border-radius:3px;width:50px;height:50px;color:#000000;border:3px solid #000000;font-size:20px;text-align:center;line-height:42px;}
+a[data-nav]:hover{background:#000000;color:#0e86e3;}
+
+	@media screen and (max-width:780px){
+		a[data-nav]{display:inline-block;}
+	}
+
+#top #welcome a, #top #welcome a:hover, #game ul li figure, #game ul li:hover figure, #top nav #lang, #top nav #lang:hover
+{-webkit-transition:0.4s;-moz-transition:0.4s;-o-transition:0.4s;-ms-transition:0.4s;transition:0.4s;}
+
+*{position:relative;box-sizing:border-box;}
+
+#top .nav nav section, .ct{width:1024px;margin:auto;padding:0 25px;}
+	@media screen and (max-width:1024px){
+		#top .nav nav section, .ct{width:100%;}
+	}
+
+	html{color:#000000;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+
+/*********************** * ***********************/
+
+/* banner */
+#banner{background:#000000;display:inline-block;width:100%;}
+#banner p{color:#0e86e3;text-align:center;padding:14px 0;text-transform:uppercase;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:16px;font-weight:400;}
+#banner strong{animation:1s click infinite;display:inline-block;margin-left:5px;}
+
+	@keyframes click{
+		0%{transform:rotate(-5deg);right:-10px;}
+		50%{transform:rotate(5deg);color:#ffffff;right:0px;}
+		100%{transform:rotate(-5deg);right:-10px;}
+	}
+
+	@media screen and (max-width:780px){
+		#banner p{font-size:14px;padding:16px 60px 16px 0;}
+	}
+	
+/* switch */
+#switch{background:#000000;display:inline-block;width:100%;padding:14px 0;text-align:center;}
+#switch ul li {display:inline;margin-right:24px;}
+#switch ul li:last-child{margin-right:0;}
+#switch ul li a{color:#ddd;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:15.5px;font-weight:400;}
+#switch .active a {color:#0e86e3;}
+
+	@media screen and (max-width:780px){
+		#switch {text-align:left;}
+		#switch ul li {display:block;}
+	}
+
+/* top */
+#top{z-index:99;width:100%;min-height:320px;background:url(../img/playhappyclub-phc_bg.jpg) no-repeat top center #0e86e3;background-size:cover;}
+#top nav{position:absolute;right:0;z-index:10;}
+#top nav li{margin-left:-3px;font-weight:400;font-size:12px;letter-spacing:1px;display:inline-block;text-transform:uppercase;font-family:'Montserrat', 'Open Sans', sans-serif;}
+#top nav li a{padding:25px;display:inline-block;font-weight: bold;}
+
+#top .nav nav{width:100%;background:black;position:fixed;z-index:99;box-shadow:0 0 6px rgba(0,0,0,0.3);}
+#top .nav nav section{height:100%;}
+#top .nav nav ul{float:right;height:100%;}
+#top .nav nav li{color:#0e86e3;}
+#top .nav nav li.active a{background:#0e86e3;color:#000000;}
+#top .nav nav li:not(.active) a:hover{background:rgba(255,255,255,0.1);}
+
+#top nav #lang{cursor:pointer;padding-top:5px;right:-60px;height:25px;top:-18px;width:60px;overflow:hidden;position:absolute;z-index:99;}
+#top nav #lang:hover{background:#000000;height:72px!important;} /* 3 langues : height:100px; */
+#top nav #lang:hover li{color:#0e86e3;}
+#top nav #lang:hover li a{color:#0e86e3;}
+#top nav #lang li{width:100%;padding:0;margin:0;text-align:center;}
+#top nav #lang li a{padding:5px 0;text-align:center;width:100%;}
+#top nav #lang li a:hover{color:#000000;background:#0e86e3;}
+
+#top #logotype{width:200px;}
+/*#top .nav #logotype:not(.affiliation){position:fixed;top:5px;z-index:99;left:50%;margin-left:-490px;width:80px;display: inline;}
+*/
+#top #welcome{text-align:center;width:100%;padding-top:100px;}
+#top #welcome h2#one{width:64%;margin:auto;margin-top:10px;}
+#top #welcome h1 span{font-size:90px;font-weight:700;text-shadow:0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff;}
+#top #welcome .fleche{width:200px;margin:25px 0;}
+#top #welcome a.button{padding:14px 30px;font-size:14px;display:inline-block;font-family:'Montserrat', 'Open Sans', sans-serif!important;letter-spacing:1px;text-transform:uppercase;border:3px solid #000000;border-radius:3px;}
+#top #welcome a.button:hover{background:#000000;color:#0e86e3;}
+#top #welcome a.rs{margin:25px 5px;font-size:25px;}
+#top #welcome a.rs:hover{color:#ffffff;}
+
+#next-matchs{display: flex; justify-content:space-between; padding-bottom: 30px;}
+#next-matchs .next-date{flex:1;margin:5px; background: #fff;}
+#next-matchs .next-date .champ{color: #fff;background: #3360CC;}
+#next-matchs .next-date .journee{font-size: 12px;}
+#next-matchs .next-date .date{margin-bottom: 20px;}
+#next-matchs .next-date .equipes{color:c60000;font-size: 20px;}
+/*#top #welcome p{width:50%;margin:auto;margin-top:20px;font-size:14px;font-family:'Open Sans', sans-serif;}*/
+
+
+#top .kinguin{position:absolute;bottom:5px;right:15px;display:inline-block;width:124px;height:111px;}
+
+	@media screen and (max-width:780px){
+		/*#top .nav #logotype:not(.affiliation){top:40px!important;max-width:100%;width:310px;position:relative;left:0!important;margin-left:0!important;z-index:9;margin-bottom:-120px;}		#top .nav section,
+		#top .nav #logotype:not(.affiliation){top:40px!important;max-width:100%;width:310px;position:relative;left:0!important;margin-left:0!important;z-index:9;margin-bottom:-120px;}		#top .nav section,
+		*/
+		#top nav{margin-top:-5px;height:auto!important;background:#000000;width:100%;left:0;position:fixed!important;z-index:99!important;top:-400px;opacity:0;}
+		#top nav a{color:#0e86e3;}
+		#top nav li,
+		#top nav li a{width:100%;}
+		#top .nav section{position:relative!important;opacity:1!important;top:0!important;}
+		#top nav li a:hover{background:#0e86e3!important;color:#000000!important;}
+		#top nav ul#nav{bottom:-5px;}
+		#top nav ul#nav,
+		#top .nav nav ul#nav{height:auto!important;float:none;padding:0!important;padding-right:0!important;}
+		#top nav li{left:0;margin:0;}
+		#top .nav section{width:calc(100% + 50px)!important;left:-25px;}
+		#top nav #lang{background:rgba(255,255,255,0.1)!important;position:relative;color:#0e86e3!important;width:100%;left:0;top:0;padding:0;overflow:auto!important;height:auto!important;}
+		#top nav #lang:hover{height:auto!important;}
+		#top nav #lang li:first-child{display:none!important;}
+		#top nav #lang li:first-child,
+		#top nav #lang li{width:50%;margin-right:-4px;display:inline-block;padding:0!important;} /* 3 langues : width:33.3333%; */
+		#top nav #lang li a{padding:25px;display:inline-block;}
+		#top nav #lang li.act a{background:#0e86e3;color:#000000;}
+		#top .kinguin{position:relative;margin:auto;left:50%;padding:10px 0;height:131px;margin:0 0 0 -62px;}
+	}
+	@media screen and (min-width:780px){
+		#top nav{top:0!important;opacity:1!important;}
+	}
+	@media screen and (max-width:800px){
+		#top #welcome p,
+		#top #welcome h1{width:100%;}
+		#top #welcome {padding-top:50px;}
+	}
+
+	@media screen and (max-width:1130px){
+		#top nav ul#nav{padding-right:80px;}
+		#top .nav nav ul#nav{padding-right:50px;}
+	}
+
+
+/* game */
+#game ul{display: flex;flex-wrap:wrap;background: #000;}
+#game ul li{overflow:hidden;width:25%;float:left;height:300px;background-position:center center;background-size:cover;}
+#game ul li figure{width:100%;height:100%;padding:25px;background:rgba(0,0,0,0.4);border: 9px solid transparent;}
+#game ul li figure:hover{border:9px solid #fff;}
+#game ul li figure:hover{background:rgba(0,0,0,0.2);}
+#game ul li figure img{max-width:100%;}
+#game ul li figure figcaption{padding-right:15px;position:absolute;bottom:22px;font-size:16px;line-height:20px;color:#ffffff;text-shadow:0 2px 3px #000000;}
+#game ul li figure figcaption span{font-size:18px;text-transform:uppercase;color:#0e86e3;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+
+	@media screen and (max-width:1440px){
+		#game ul li{width:33.3333%;}
+	}
+	@media screen and (max-width:1064px){
+		#game ul li{width:50%;}
+	}
+	@media screen and (max-width:645px){
+		#game ul li{width:100%;}
+	}
+
+/* chance */
+#chance{text-align:center;clear:both;padding:40px 0 30px;background:url(../img/playhappyclub-phc_bg-chance.jpg) no-repeat center center;background-size:cover;}
+#chance h2{font-size:34px;font-weight:300;line-height:35px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#chance h2 strong.r{display:inline-block;font-size:65px;padding:30px 0;transform:rotate(-5deg);-moz-transform:rotate(-5deg);-moz-transform:rotate(-5deg);text-shadow:0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff, 0 0 10px #ffffff;}
+#chance h3{font-size:16px;line-height:16px;font-weight:300;padding-top:20px;}
+#chance img.illu{position:absolute;bottom:-30px;left:-60px;}
+
+	@media screen and (max-width:950px){
+		#chance img.illu{display:none;}
+	}
+	@media screen and (max-width:580px){
+		#chance h2 strong.r{font-size:40px;line-height:45px;color: #fff;text-shadow:none;}
+	}
+
+/* barre */
+#barre{height:36px;background:#000000;box-shadow:0 0 1px rgba(0,0,0,0.5) inset;z-index:50;}
+#barre div{height:36px;background:url(../img/barre.gif) repeat-x;display:inline-block;box-shadow:0 0 1px rgba(0,0,0,0.5) inset;}
+#barre div img{position:absolute;right:-40px;top:-34px;}
+
+/* comment */
+#comment{overflow:hidden;background: #1b1b1b;background-size:cover;}
+#comment .ct section{width:50%;text-align:right;}
+#comment h2{padding:45px 0 25px;font-size:35px;color:#ffffff;text-transform:uppercase;line-height:37px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#comment h2 span{font-size:50px;color:#0e86e3;}
+#comment p{font-size:16px;line-height:20px;color:#ffffff;font-weight:300;padding-bottom:45px;}
+#comment img.illu{position:absolute;right:0;bottom:0;height:100%;}
+
+	@media screen and (max-width:800px){
+		#comment .ct section{width:100%;text-align:center;}
+		#comment img.illu{display:none;}
+	}
+
+
+/* avis */
+#avis{border-bottom:10px solid #f0f0f0;background:#ffffff;padding:60px 0;}
+#avis li{width:calc(33.3333% - 30px);margin-right:30px;display:inline-block;}
+#avis li:last-child{margin-right:0;}
+#avis li .avatar{border-radius:50%;background:#0e86e3;width:65px;height:65px;float:left;margin-right:7px;}
+#avis li .note{width:calc(100% - 72px);padding-top:10px;float:right;}
+#avis li .note h2{display:inline;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:20px;line-height:19px;}
+#avis li .note h2 span{z-index:80}#avis li .note .star{padding:10px 0;}
+#avis li .note .star i{font-size:24px;margin-right:-3px;}
+#avis li .note .star i.yellow{color:#0e86e3;}
+#avis li .note .star i.grey{color:#f0f0f0;}
+#avis li .note p{font-size:14px;line-height:18px;font-weight:300;font-style:italic;color:#1c1c1c;padding-bottom:10px;}
+#avis li .note span.author{font-size:13px;color:#7f7f7f;}
+
+		@media screen and (max-width:840px){
+			#avis li{width:calc(50% - 30px);margin-right:30px;}
+			#avis li:last-child{display:none;}
+			#avis li:nth-child(2){margin-right:0;}
+		}
+		@media screen and (max-width:600px){
+			#avis li{width:100%!important;margin-right:0;}
+			#avis li:first-child{margin-bottom:20px;}
+		}
+
+/* payment */
+#payment{background:url(../img/playhappyclub-phc_bg-payment.jpg) no-repeat left top #ffffff;padding:60px 0;}
+#payment h2{margin:auto;text-align:center;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:30px;text-transform:uppercase;font-weight:bold;}
+#payment h2:after{content:'';z-index:50;width:30%;left:35%;position:absolute;bottom:0px;height:10px;background:#0e86e3;display:inline-block;}
+#payment h2 span{z-index:60;}
+#payment p{text-align:center;padding:35px 0;font-size:14px;line-height:20px;}
+#payment section.left,
+#payment section.right{width:50%;}
+#payment section.left{float:left;}
+#payment section.right{float:right;padding-left:25px;}
+#payment section.right img{max-width:100%;}
+#payment table{width:100%;font-size:14px;z-index:50;}
+#payment table.s tfoot td:last-child{display:none;opacity:0;}
+#payment table.s tbody td:last-child{border:0;}
+#payment table thead th{z-index:40;padding:15px 0;color:#6e6e6f;border-bottom:1px solid rgba(0,0,0,0.1);}
+#payment table tbody td{font-weight:bold;z-index:80;padding:20px 0;border-bottom:3px double rgba(0,0,0,0.1);}
+#payment table tfoot td{z-index:40;padding:15px 0;font-size:16px;font-weight:bold;}
+#payment table .select{top:15px;position:absolute;cursor:pointer;width:100%;text-align:right;overflow:hidden;font-size:13px;height:30px;z-index:400;}
+#payment table .select:hover{background:#ffffff;}
+#payment table .select:hover li:first-child{background:#0e86e3!important;}
+#payment table .select li{background:rgba(0,0,0,0.03);width:100%;line-height:30px;height:30px;padding:0 15px 0 10px;color:#000000;}
+#payment table .select li:first-child{background:transparent;}
+#payment table .select li:first-child:after{background:transparent;margin-left:5px;margin-right:-8px;}
+#payment table .select li:hover{background:#0e86e3;}
+#payment h3{font-size:16px;font-weight:300;padding:25px 0 20px;}
+#payment #infos{z-index:40;}
+#payment #infos .select, input, textarea{color:#000000;background:#ffffff;border:1px solid rgba(0,0,0,0.1);width:100%;line-height:60px;height:60px;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.07);padding:0 20px;}
+#payment #infos .select {padding:0 0;position:absolute;cursor:pointer;overflow:hidden;font-size:13px;z-index:400;}
+#payment #infos .select li{background:#ffffff;width:100%;height:60px;padding:0 20px;color:#000000;}
+#payment #infos .select li:first-child{background:transparent!important;}
+#payment #infos .select li:hover{background:#0e86e3;}
+#payment #infos .select li:first-child:after{position:absolute;right:20px;top:23px;}
+#payment #infos .select:hover li:first-child:after{color:#0e86e3;}
+#payment #infos .select.overflow{overflow-y:scroll!important;}
+#payment #infos input[type=text]{margin-top:75px;padding:0 20px;}
+
+button[type=submit], #payment #infos button, #aff button[type=button] {display:inline-block;width:200px;margin-left:-100px;left:50%;margin-top:20px;background:#0e86e3;text-align:center;line-height:40px;height:40px;border-radius:3px;}
+
+	@media screen and (max-width:800px){
+		#payment section.left{float:none;width:100%}
+		#payment section.right{display:none;}
+	}
+
+/* fb widget */
+#facebook {background-image:url(../img/facebook-widget.png); width:288px; height:345px; position:fixed; top:0; right:-250px; transition:right 1s; margin-top:50vh; transform:translateY(-50%); z-index:99; cursor:pointer;}
+#facebook iframe {width:250px; height:345px; padding:7px; float:right; border:none; overflow:hidden; border-radius:5px;}
+#facebook:hover {right:0; transition:right 1s;}
+
+	@media screen and (max-width:780px){
+		#facebook {display:none;}
+	}
+
+/* footer */
+footer{background:#000000;padding:25px;font-size:11px;color:#ffffff;}
+footer a:hover{color:#0e86e3;}
+footer ul{float:right;top:-16px;}
+footer ul li{display:inline-block;}
+footer ul li:after{content:'-';margin:5px;}
+footer ul li:last-child:after{content:'';display:none;}
+
+	@media screen and (max-width:780px){
+		footer{text-align:center;}
+		footer ul{float:none;top:0;}
+	}
+
+/* popup */
+#popup {z-index:199; position:fixed; top:0; bottom:0; left:0; right:0; background:rgba(0, 0, 0, 0.6); cursor:alias;}
+#popup #marginc {margin:0 0px;}
+#popup #cadre {position:relative; margin:0 auto; max-width:800px; margin-top:50vh; transform:translateY(-50%); background:#fff; border:1px solid #000; border-radius:3px;}
+#popup #cadre #closep {position:absolute; right:-15px; top:-15px; z-index:199;}
+#popup #cadre #closep img {cursor:pointer;}
+#popup #cadre #frame {height:0; min-height:600px; position:relative;}
+#popup #cadre #frame iframe {position:absolute; height:100%; top:0; left:0; width:100%;}
+
+/* affiliation */
+#top.affiliation{min-height:550px;padding-top:20px;background-image:url(../img/affiliation/playhappyclub-phc-background-affiliation.jpg);background-position:center center; z-index:9;}
+
+#lets{background:url(../img/affiliation/playhappyclub-phc-background-lets.jpg) no-repeat left center #000000;}
+#lets h2{color:#ffffff;text-align:center;max-width:650px;font-size:28px;margin:auto;padding:50px 0;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-weight:400;}
+#lets h2 strong{color:#0e86e3;font-weight:700;}
+	@media screen and (max-width:780px){ #lets{background-size:cover;} }
+
+#fonction, #aff{background:#ffffff;overflow:hidden!important;}
+#fonction h2, #aff h2{z-index:95;color:#000000;text-align:center;width:100%;font-size:35px;line-height:33px;margin:auto;padding:50px 0 0;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-weight:700;}
+#fonction h2:after, #aff h2:after{content:'';z-index:50;width:30%;left:35%;position:absolute;bottom:-3px;height:10px;background:#0e86e3;display:inline-block;}
+#fonction h2 span, #aff h2 span{display:inline-block;width:100%;font-size:12px;letter-spacing:4px;line-height:14px;padding-bottom:15px;text-transform:uppercase;font-weight:400;}
+#fonction h2 i, #aff h2 i{z-index:60;}
+#fonction .illu{position:absolute;left:685px;bottom:-10px;z-index:90;}
+#fonction .p{z-index:95;max-width:665px;padding:50px 0 35px;}
+#fonction .p p{width:100%;font-size:16px;line-height:24px;font-weight:300;margin-bottom:20px;}
+
+#services{padding:50px 0;background:url(../img/affiliation/playhappyclub-phc-background-services.jpg) no-repeat center center;background-size:cover;}
+#services h2{color:#ffffff;text-align:center;padding-bottom:30px;max-width:650px;font-size:28px;margin:auto;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-weight:400;}
+#services ul li{min-height:200px;float:left;width:33.333%;padding:0 25px;text-align:center;color:#ffffff;font-size:13px;font-weight:300;}
+#services ul li h3{color:#0e86e3;font-size:16px;padding:10px 0;line-height:16px;}
+	@media screen and (max-width:840px){ #services ul li{width:50%;} }
+	@media screen and (max-width:540px){ #services ul li{width:100%;} }
+
+#aff{padding:40px 0;}
+#aff h2{padding:0;}
+#aff h3{text-align:center;}
+#aff p{font-weight:300;padding:20px 0 0;text-align:center;font-size:15px;}
+#aff form{max-width:350px;margin:auto;padding:25px 0 0;}
+#aff form input, #aff form div{margin:10px auto 0 auto;}
+
+
+/* Pages */
+nav#nav{width:100%;height:70px;background:#000000;font-size:11px;position:fixed;top:0;z-index:99;}
+nav#nav ul{float:right;}
+nav#nav li{float:left;line-height:70px;text-transform:uppercase;}
+nav#nav li.active a{background:#0e86e3;color:#000000;}
+nav#nav li a{display:inline-block;color:#ffffff;height:70px;display:inline-block;padding:0 15px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+nav#nav li a:hover{background:#0e86e3;color:#000000;}
+nav#nav .welcome{float:left;color:#ffffff;line-height:70px;}
+nav#nav .welcome a {background-color:#fff;padding:3px;color:#000;font-weight:bold;border-radius:3px;}
+nav#nav i{display:none;font-size:20px;top:3px;}
+nav#nav li:last-child{margin-top:-22px;}
+nav#nav li:last-child i{display:block;top:25px;}
+
+/* Nav display */
+nav #login {display:none;width:300px;background:#eee;position:fixed;margin-top:70px;margin-left:674px;z-index:99;padding:5px;}
+nav #login input,nav #login button {height:30px; line-height:30px;}
+nav #login button {margin-top:2px;}
+
+	@media screen and (max-width:1015px){
+		nav #login {margin-left:0; right:0;}
+	}
+
+	@media screen and (max-width:920px){
+		nav#nav span{display:none;}
+		nav#nav i{display:block;top:25px;}
+		nav#nav li{height:70px;margin-top:-22px;line-height:70px}
+	}
+	@media screen and (max-width:420px){
+		nav#nav .ct{width:100%;padding:0;}
+		nav#nav .welcome{display:none;}
+		nav#nav ul{float:none;width:calc(100% + 80px);}
+		nav#nav li{width:13.66666%;padding:0;text-align:center;}
+		nav#nav li a{width:100%;}
+	}
+
+
+#stats{margin-top:70px;background:url(../img/playhappyclub-phc_bg-stats.jpg) no-repeat center center;background-size:cover;padding:50px 0 30px;}
+#stats h2, #lien h2, #media h2, #stats h3{color:#ffffff;text-shadow:0 0 10px rgba(0,0,0,.1);font-size:30px;padding-bottom:35px;text-transform:uppercase;text-align:center;letter-spacing:3px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#stats h3{font-size:25px;font-weight:400;padding-bottom:15px;}
+#stats ul li, #stats input{width:calc(25% - 20px);box-shadow:0 0 10px rgba(0,0,0,.1);float:left;background:#ffffff;margin:0 25px 35px 0;border:1px solid #ddba27;padding:15px 0px 15px 25px;border-radius:5px;}
+#stats ul li:last-child{margin-right:0;}
+#stats ul li span{font-size:10px;color:#000000;letter-spacing:2px;text-transform:uppercase;display:inline-block;width:100%;}
+#stats ul li strong{font-size:50px;color:#0e86e3;text-transform:uppercase;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#stats form{display:block;margin:auto;width:218px;}
+#stats input{float:none;text-align:right;padding-right:25px;width:150px;margin-right:5px;}
+#stats button{box-shadow:0 0 10px rgba(0,0,0,.1);border:1px solid #000000;background:#000000;height:58px;width:58px;top:2px;border-radius:3px;color:#0e86e3;font-size:20px;margin-top:0;}
+#stats button:hover{background:#0e86e3;border-color:#ddba27;;color:#000000;font-size:20px;}
+
+	@media screen and (max-width:780px){
+		#stats ul li{width:calc(50% - 20px);}
+		#stats ul li:nth-child(odd){margin-right:40px;}
+		#stats ul li:nth-child(even){margin-right:0;}
+	}
+	@media screen and (max-width:480px){
+		#stats ul li{width:100%!important;margin-right:0!important;}
+	}
+
+
+#lien{padding:60px 0;background:url(../img/playhappyclub-phc_background-lien.jpg) no-repeat center center;background-size:cover;}
+#lien .line{background:#ffffff;display:block;padding:20px 25px;font-size:20px;border-radius:6px;border:3px solid #000000;box-shadow:0 0 5px rgba(0,0,0,.3) inset;}
+#lien p{color:#ffffff;font-weight:300;text-align:center;padding:30px 0 0;}
+
+#media{background:url(../img/playhappyclub-phc_bg-payment.jpg) no-repeat left top #ffffff;padding:50px 0;}
+#media h2{color:#000000;}
+#media h3{font-size:14px;letter-spacing:4px;font-weight:300;text-align:center;padding-bottom:20px;text-transform:uppercase;}
+#media li{width:calc(50% - 20px);float:left;margin-right:40px;}
+#media li div{margin-bottom:15px;}
+#media li:last-child{margin-right:0;text-align:right;}
+#media li img,
+#media li iframe{max-width:100%;border:3px solid rgba(0,0,0,.1);border-radius:5px;}
+#media li img.medium{max-width:80%;}
+#media li span{display:inline-block;width:100%;top:-5px;font-size:12px;text-align:right;}
+#media li:first-child span{text-align:left;}
+#media li a{transition:0.2s;color:#ffffff;text-transform:uppercase;border-radius:3px;font-size:9px;padding:2px 6px;background:#000000;ont-weight:600;}
+#media li a:hover{transition:0.4s;background:#0e86e3;}
+
+	@media screen and (max-width:780px){
+		#media li{width:100%;margin:0 0 25px 0;}
+	}
+
+
+#default{background:url(../img/playhappyclub-phc_bg-payment.jpg) no-repeat left top #ffffff;margin-top:70px;padding:50px 0 15px;}
+#default h1{color:#000000;padding-bottom:0;margin:auto;margin-bottom:35px;text-align:center;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:30px;text-transform:uppercase;font-weight:bold;}
+#default h1:after{content:'';z-index:50;width:30%;left:35%;position:absolute;bottom:0px;height:10px;background:#0e86e3;display:inline-block;}
+#default h1 span{z-index:60;}
+#default h2{color:#000000;text-shadow:0 0 10px rgba(0,0,0,.1);font-size:25px;padding-bottom:20px;text-transform:uppercase;letter-spacing:1px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#default h3{color:#000000;text-shadow:0 0 10px rgba(0,0,0,.1);font-size:18px;padding-bottom:20px;text-transform:uppercase;letter-spacing:2px;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#default p, #default label{font-size:14px;line-height:24px;color:#3b3b3b;padding-bottom:30px}
+#default ul{list-style:decimal;margin-top:-20px;}
+#default ul li{padding-bottom:15px;font-size:14px;line-height:24px;color:#3b3b3b;}
+#default a{font-weight:600;}
+#default a:hover{color:#0e86e3;}
+#default .graph{width:70px;float:left;margin-right:15px;top:-10px;}
+#default .yellow{color:#0e86e3;}
+#default .g-recaptcha {margin-top:25px;}
+#default form{margin-bottom:25px;}
+#default input{margin-bottom:25px;width:300px;max-width:100%;}
+#default textarea{width:350px;height:200px;max-width:100%;}
+#default label{padding-bottom:10px;display:inline-block;width:100%;}
+#default button{position:relative;left:0;margin-left:0;}
+
+/*** spin ***/
+
+#top.roulette{min-height:auto!important;padding-bottom:50px;}
+
+#wheel{transition:0.5s;background:url(../img/playhappyclub-phc_bg-wheel.jpg) no-repeat center center;background-size:cover;padding:45px 0 85px;z-index:600;}
+#wheel h2{color:#ffffff;text-align:center;padding:5px 25px 35px 25px;display:inline-block;width:100%;font-size:12px;letter-spacing:4px;line-height:14px;text-transform:uppercase;font-weight:400;}
+#wheel h2 strong{color:#0e86e3;}
+#wheel .wh{border:8px solid #0e86e3;background:#0e86e3;width:934px;height:135px;left:50%;margin-left:-440px;border-radius:15px;width:auto;display:inline-block;box-shadow:0 0 10px #000000;}
+#wheel .wh #wheelPhc .window{border:3px solid transparent;border-radius:3px!important;overflow:hidden;display:inline-block;}
+#wheel .wh #wheelPhc .window .content{background:#000;}
+#wheel .wh #wheelPhc .window .content.lose:before{content:"Dommage ! Vous auriez pu gagner ce jeu !";font-size:11px;line-height:11px;padding:45px 25px 0;box-sizing:border-box;color:#0e86e3;text-align:center;display:inline-block;top:0;left:0;position:absolute;z-index:350;width:173px;height:120px;background:rgba(0,0,0,.5);}
+#wheel .wh #wheelPhc .window .content.win:before{content:"";position:absolute;z-index:350;animation:0.7s win infinite linear;box-shadow:0 0 10px #ffffff inset;width:168px;height:115px;}
+#wheel .wh #wheelPhc .window .content img{position:absolute;z-index:300;top:0;left:0;}
+#wheel button{background:#f8cd17;color:#000000!important;width:200px;position:absolute;left:50%;margin-left:-100px;bottom:-20px;border-radius:6px;font-size:30px;padding:14px 0;text-transform:uppercase;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-weight:700;}
+#wheel button:hover{background:#0e86e3;animation:0.5s click infinite linear;}
+#wheel button.dis{background:#d1d1d1!important;animation:none!important;}
+
+	@media screen and (max-width:940px){
+		#wheel .wh{width:535px;height:255px;margin-left:-267px;}
+		#wheel .wh .window:nth-child(4){left:90px;margin-top:-5px;}
+		#wheel .wh .window:nth-child(5){left:90px;margin-top:-5px;}
+	}
+	@media screen and (max-width:580px){
+		#wheel .wh{width:188px;height:617px;margin-left:-90px;padding-top:5px;}
+		#wheel .wh .window{left:0!important;margin-top:-5px;}
+	}
+	@keyframes win{
+		0%{box-shadow:0 0 15px #ffffff inset, 0 0 10px #ffffff inset, 0 0 5px #000000 inset;}
+		33%{box-shadow:0 0 15px #0e86e3 inset, 0 0 10px #0e86e3 inset, 0 0 5px #000000 inset;}
+
+		66%{box-shadow:0 0 15px #f3b124 inset, 0 0 10px #f3b124 inset, 0 0 5px #000000 inset;}
+
+		100%{box-shadow:0 0 15px #ffffff inset, 0 0 10px #ffffff inset, 0 0 5px #000000 inset;}
+	}
+
+#payment.cWheel{z-index:500;padding-bottom:25px;}
+#payment.cWheel .gameWin{display:none;margin-bottom:30px;margin-top:-15px;}
+#payment.cWheel .gameWin li{padding:30px 0 30px 200px;border-bottom:1px solid rgba(0,0,0,.07);}
+#payment.cWheel .gameWin li:last-child{border-bottom:0;}
+#payment.cWheel .gameWin li .illu{position:absolute;top:30px;left:0;}
+#payment.cWheel .gameWin li h3{color:#343434;font-size:25px;line-height:25px;padding-top:0;font-weight:700;text-transform:uppercase;font-family:'Montserrat', 'Open Sans', sans-serif!important;}
+#payment.cWheel .gameWin li .code{background:#f4f4f4;letter-spacing:1px;border:1px solid #dddddd;font-family:'Open Sans', sans-serif!important;display:inline-block;padding:15px 18px;margin-top:-7px;border-radius:6px;font-size:16px;line-height:18px;font-weight:300!important;text-transform:uppercase;}
+#payment.cWheel .gameWin li a{color:#000000;font-size:14px;font-weight:600;width:100%;display:inline-block;padding-top:12px;}
+#payment.cWheel .gameWin li a:hover{color:#0e86e3;}
+
+	@media screen and (max-width:630px){
+		#payment.cWheel .gameWin li{text-align:center!important;padding-left:0;}
+		#payment.cWheel .gameWin li .illu{max-width:calc(100% - 40px);margin-bottom:7px;position:relative;top:0;}
+	}
+
+/*** review ***/
+
+#note #title{background:url(../img/playhappyclub-phc_bg-avis.jpg) no-repeat center center #0e86e3;padding:50px 0 40px;}
+#note #title h1{color:#000000;padding-bottom:0;margin:auto;margin-bottom:35px;text-align:center;font-family:'Montserrat', 'Open Sans', sans-serif!important;font-size:30px;text-transform:uppercase;font-weight:bold;}
+#note #title h1:after{content:'';z-index:50;width:30%;left:35%;position:absolute;bottom:0px;height:10px;background:#ffffff;display:inline-block;}
+#note #title h1 span{z-index:60;}
+#note #title .center{text-align:center;font-size:18px;}
+#note #title .fleche{display:block;width:230px;max-width:100%;margin:auto;margin-top:35px;}
+
+#note #default{margin-top:0;}
+
+#note #tweet{width:100%;}
+#note #tweet > .row{width:100%;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;flex-wrap:wrap;align-items:flex-start;}
+#note #tweet > .row > .frame{width:calc(50% - 5px);margin-bottom:10px;}
+#note #tweet > .row > .frame:nth-child(odd){margin-right:10px;}
+#note .load{background:#000000;border-radius:5px;margin:auto;display:block;color:#ffffff;text-transform:uppercase;padding:15px 25px;font-size:14px;margin-top:15px;-webkit-transition:0.4s;-moz-transition:0.4s;-o-transition:0.4s;-ms-transition:0.4s;transition:0.4s;}
+#note .load:hover{background:#0e86e3;-webkit-transition:0.4s;-moz-transition:0.4s;-o-transition:0.4s;-ms-transition:0.4s;transition:0.4s;}
+#note .load span{top:0;-webkit-transition:0.4s;-moz-transition:0.4s;-o-transition:0.4s;-ms-transition:0.4s;transition:0.4s;}
+#note .load:hover span{top:3px;-webkit-transition:0.4s;-moz-transition:0.4s;-o-transition:0.4s;-ms-transition:0.4s;transition:0.4s;}
+
+	@media screen and (max-width:520px){
+		#note #tweet > .row > .frame{width:100%;margin-right:0!important;}
+	}
+
+
+#wrapper-ajax table, #wrapper-ajax th,#wrapper-ajax td{ border:none;}
+#wrapper-ajax .derniers-resultats table,
+#wrapper-ajax .prochains-matchs table,
+#wrapper-ajax .all-matchs table{border: 1px solid #aaa;}
+#wrapper-ajax  table th{background:#4C85AF;}
+#wrapper-ajax h3{color: #4C85AF;}
+#wrapper-ajax .derniers-resultats td, #wrapper-ajax  .prochains-matchs td{ padding: 10px;}
+#wrapper-ajax .all-matchs td{ padding: 15px;}
+#wrapper-ajax  td.new-day{border-top:5px solid #4C85AF; }
+
+#wrapper-ajax .all-matchs{width: 100%}
+#wrapper-ajax .all-matchs table{width: 50%;margin:0 auto;}
+@media screen and (max-width:1000px){
+	#wrapper-ajax .all-matchs table{width: 90%;}
+}
+
+
+	@media screen and (max-width:573px){
+		#next-matchs{flex-direction:column;}
+	}
