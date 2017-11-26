@@ -10,7 +10,7 @@ try
 	// On se connecte à MySQL
 
 	//Local
-	$bdd = new PDO('mysql:host=localhost;dbname=goussainville;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=uaff;charset=utf8', 'root', '');
 	// Prod
 	//voir gv2017-11
 }

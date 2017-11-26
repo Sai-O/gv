@@ -3,9 +3,9 @@
 try
 {
 	//Local
-	$bdd = new PDO('mysql:host=localhost;dbname=goussainville;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=uaff;charset=utf8', 'root', '');
 	// Prod
-	//$bdd = new PDO('mysql:host=localhost;dbname=h4090_gv;charset=utf8', 'h4090', '5ZQI7tqN');
+	//voir gv2017-11
 }
 catch(Exception $e)
 {
