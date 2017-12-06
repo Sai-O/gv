@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once('../configs/connexion.php');
 ?>
@@ -32,7 +32,7 @@ require_once('../configs/connexion.php');
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
+
 
 </head>
 
@@ -62,8 +62,8 @@ require_once('../configs/connexion.php');
                 </div>
                 <!-- /.row -->
 
-                 <?php 
-                    if (isset($_SESSION['info'])){ 
+                 <?php
+                    if (isset($_SESSION['info'])){
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
@@ -75,41 +75,42 @@ require_once('../configs/connexion.php');
                     </div>
                     <!-- /.row -->
                 <?php } unset($_SESSION['info']);?>
-    
+
 
                 <div class="row">
-                    <div class="col-lg-2"> 
+                    <div class="col-lg-2">
                         <div class="">
                              <a href="equipe-nouveau.php" class="btn btn-primary">Nouveau</a></a>
                         </div>
                     </div>
 
-                    <div class="col-lg-6" style="background:#fff;"> 
+                    <div class="col-lg-6" style="background:#fff;">
                         <form method="GET">
                             <div class="form-group" style="padding:10px;">
                                 <label for="championnat_id" class="col-sm-2 control-label">Championnat</label>
                                 <div class="col-sm-6">
                                     <select name="sc" id="selectChampionnat">
                                         <option value="" disabled selected>filtrer par championnat</option>
-                                        <?php 
+                                        <?php
+
                                             $reponse = $bdd->query('SELECT * FROM championnat  ORDER BY ID ASC');
-                                
+
                                             while($donnees=$reponse->fetch()){
                                                 echo '<option value="'.$donnees['id'].'"> '.$donnees['name'].'</option>';
                                             }
                                             $reponse->closeCursor(); // Termine le traitement de la requête
-                                         ?> 
-                                        
+                                         ?>
+
                                     </select>
                                     <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
                                 </div>
-                                
+
                             </div>
                         </form>
                     </div>
 
-                    <div class="col-lg-12">       
-                        
+                    <div class="col-lg-12">
+
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -127,31 +128,43 @@ require_once('../configs/connexion.php');
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           <?php 
-                                            if(isset($_GET["sc"])){
-                                             $query='SELECT e.id as id, e.name as name, e.description_short as description_short, 
-                                                                                e.description as description, c.name as championnat_name  
+                                           <?php
+                                           // Système de pagination
+                                            $team_pages=10;
+
+                                              $teamTotalReq = $bdd->prepare('SELECT COUNT(id) AS total FROM `equipe`');
+                                              $teamTotalReq->execute();
+                                              $teamTotal = $teamTotalReq->fetch(PDO::FETCH_ASSOC);
+                                              print_r($teamTotal);
+                                             $nb_pages = ceil(intval($teamTotal['total'])/$team_pages);
+
+                                              if (isset($_GET['page']) && !empty($_GET['page'])) {
+                                                $_GET['page'] = intval($_GET['page']);
+                                                $pageActuelle = $_GET['page'];
+                                              } else {
+                                                $pageActuelle=1;
+                                                }
+                                                $debut = ($pageActuelle-1)*$team_pages;
+                                            //fin de système de pagination
+                                            if(isset($_GET["sc"])) {
+                                             $query='SELECT e.id as id, e.name as name, e.description_short as description_short,
+                                                                                e.description as description, c.name as championnat_name
                                                                                 FROM equipe e
                                                                                 INNER JOIN  championnat c ON c.id = e.championnat_id
                                                                                 WHERE c.id = '.$_GET["sc"].'
-                                                                                ORDER BY id DESC'; 
+                                                                                ORDER BY id DESC
+                                                                                LIMIT 0,2';
                                             }
                                             else{
-                                                $query='SELECT e.id as id, e.name as name, e.description_short as description_short, 
-                                                                                e.description as description, c.name as championnat_name  
+                                                $query='SELECT e.id as id, e.name as name, e.description_short as description_short,
+                                                                                e.description as description, c.name as championnat_name
                                                                                 FROM equipe e
                                                                                 INNER JOIN  championnat c ON c.id = e.championnat_id
-
-                                                                                 ORDER BY id DESC'; 
+                                                                                ORDER BY id DESC
+                                                                                LIMIT' .$debut.''.$team_pages.'';
                                             }
-                                            $reponse = $bdd->query($query);
-
-
-
-
-                                                $reponse = $bdd->query($query);
-                            
-                                                while($donnees=$reponse->fetch()){
+                                          
+                                                while($donnees = $result){
                                                     echo '<tr> ';
                                                         echo '<td><a href="equipe-modifier.php?id='.$donnees['id'].'" class="btn btn-success" data-toggle="tooltip" data-placement="rigt" title="Editer"> <i class="fa fa-pencil"></i></a>';
                                                         echo '<td><b>'.$donnees['name'].'</b> : <span style="float: right;">'.$donnees['championnat_name'].'<span></td>';
@@ -159,15 +172,15 @@ require_once('../configs/connexion.php');
                                                         echo '<td>'.$donnees['description'].'</td>';
                                                     echo '</tr>';
                                                 }
-                                                $reponse->closeCursor(); // Termine le traitement de la requête
+                                                // $result->closeCursor(); // Termine le traitement de la requête
 
 
                                             ?>
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -183,7 +196,7 @@ require_once('../configs/connexion.php');
     </div>
     <!-- /#wrapper -->
 
-  
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

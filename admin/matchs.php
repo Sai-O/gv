@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once('../configs/connexion.php');
 ?>
@@ -24,7 +24,7 @@ require_once('../configs/connexion.php');
 
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link 31102008href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +32,7 @@ require_once('../configs/connexion.php');
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
+
 
 </head>
 
@@ -62,8 +62,8 @@ require_once('../configs/connexion.php');
                 </div>
                 <!-- /.row -->
 
-                 <?php 
-                    if (isset($_SESSION['info'])){ 
+                 <?php
+                    if (isset($_SESSION['info'])){
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
@@ -75,7 +75,7 @@ require_once('../configs/connexion.php');
                     </div>
                     <!-- /.row -->
                 <?php } unset($_SESSION['info']);?>
-    
+
 
                 <div class="row">
                     <div class="col-lg-3">
@@ -84,33 +84,33 @@ require_once('../configs/connexion.php');
                              <a href="match-scorer.php"  class="btn btn-primary">Scorer</a>
                         </div>
                     </div>
-                    <div class="col-lg-6" style="background:#fff;"> 
+                    <div class="col-lg-6" style="background:#fff;">
                         <form method="GET">
                             <div class="form-group" style="padding:10px;">
                                 <label for="championnat_id" class="col-sm-2 control-label">Championnat</label>
                                 <div class="col-sm-6">
                                     <select name="sc" id="selectChampionnat">
                                         <option value="" disabled selected>filtrer par championnat</option>
-                                        <?php 
+                                        <?php
                                             $reponse = $bdd->query('SELECT * FROM championnat  ORDER BY id ASC');
-                                
+
                                             while($donnees=$reponse->fetch()){
                                                 echo '<option value="'.$donnees['id'].'"> '.$donnees['name'].'</option>';
                                             }
                                             $reponse->closeCursor(); // Termine le traitement de la requête
-                                         ?> 
-                                        
+                                         ?>
+
                                     </select>
                                     <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
                                 </div>
-                                
+
                             </div>
                         </form>
                     </div>
 
                     <div class="col-lg-12">
-                            
-                        
+
+
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -134,19 +134,37 @@ require_once('../configs/connexion.php');
                                         </thead>
                                         <tbody>
                                            <?php
+                                          // Système de pagination
+                                           $match_pages=10;
+
+                                             $matchTotalReq = $bdd->prepare('SELECT COUNT(id) AS total FROM `match`');
+                                             $matchTotalReq->execute();
+                                             $matchTotal = $matchTotalReq->fetch(PDO::FETCH_ASSOC);
+
+                                            $nb_pages = ceil(intval($matchTotal['total'])/$match_pages);
+
+                                             if (isset($_GET['page']) && !empty($_GET['page'])) {
+                                               $_GET['page'] = intval($_GET['page']);
+                                               $pageActuelle = $_GET['page'];
+                                             } else {
+                                               $pageActuelle=1;
+                                               }
+                                               $debut = ($pageActuelle-1)*$match_pages;
+                                           //fin de système de pagination
+
                                            if(isset($_GET["sc"])){
-                                                $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2, 
+                                                $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2,
                                                         match.score1, match.score2,  match.date, match.heure, match.journee, match.etat   from `match`
                                                         INNER JOIN championnat ON championnat.id = match.championnat_id
                                                         INNER JOIN equipe  as eq1 ON eq1.id = match.equipe1
                                                         INNER JOIN equipe  as eq2 ON eq2.id = match.equipe2
-                                                         WHERE championnat.id = '.$_GET["sc"].'
+                                                        WHERE championnat.id = '.$_GET["sc"].'
                                                         order by journee ASC, date ASC
-
-                                                    ');
-                                                } 
+                                                        LIMIT'.$debut.','.$match_pages.
+                                                        '');
+                                                }
                                                 else{
-                                                $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2, 
+                                                $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2,
                                                         match.score1, match.score2,  match.date, match.heure, match.journee, match.etat   from `match`
                                                         INNER JOIN championnat ON championnat.id = match.championnat_id
                                                         INNER JOIN equipe  as eq1 ON eq1.id = match.equipe1
@@ -166,16 +184,16 @@ require_once('../configs/connexion.php');
                                                     if ($today_time>$match_time) {
                                                         $matchPasse = true;
                                                     }
-                                                    
+
                                                     if ($donnees['etat'] == 0 && $matchPasse) {
                                                        echo '<tr style="background:#faa;"> ';
                                                     }
                                                     else{echo '<tr>';}
-                                                    
+
                                                         echo '<td>
                                                                 <a href="match-modifier.php?id='.$donnees['id'].'" class="btn btn-success" data-toggle="tooltip" data-placement="rigt" title="Modifier"> <i class="fa fa-pencil"></i></a>';
 
-                                                                
+
                                                                 if($etat == "A venir"){
                                                                     echo '<a href="match-scorer.php?id='.$donnees['id'].'" class="btn btn-edit" data-toggle="tooltip" data-placement="rigt" title="Scorer"> <i class="fa fa-pencil"></i></a>';
                                                                 }
@@ -190,7 +208,7 @@ require_once('../configs/connexion.php');
                                                         }
                                                         echo '<td><b>'.$donnees['equipe2'].'</b></td>';
                                                         if($donnees['date'] == null){
-                                                          $dateY = "Non défini";  
+                                                          $dateY = "Non défini";
                                                         }
                                                         else{
                                                             $dateY = date("d/m/Y",strtotime($donnees['date']));
@@ -206,18 +224,18 @@ require_once('../configs/connexion.php');
 
                                             ?>
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
+
 
         </div>
         <!-- /#page-wrapper -->
@@ -225,7 +243,7 @@ require_once('../configs/connexion.php');
     </div>
     <!-- /#wrapper -->
 
-  
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
