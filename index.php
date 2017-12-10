@@ -16,7 +16,7 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="assets/css/icones.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
-		
+
 		<!-- ================== FOR AJAX LIGHTBOX =================== -->
 		<!-- Add jQuery library -->
 		<script type="text/javascript" src="assets/fancybox/lib/jquery-1.10.2.min.js"></script>
@@ -31,18 +31,18 @@
 	</head>
 
 	<body>
-	
+
 		<section id="switch">
 		<section class="ct">
 			<ul>
-				
+
 				<li><a title="Jeu steam gratuit" href="#">Union des Associations de Futsal Français</a></li>
-				
+
 			</ul>
 		</section>
 	</section>
-	
-	
+
+
 		<div id="action"></div>
 		<a data-nav=""></a>
 
@@ -55,7 +55,7 @@
 							<li class=""><a data-go="#game" title="Jeux à gagner dans les box">Championnats</a></li>
 							<li class=""><a data-go="#chance" title="Présentation du service">Actus</a></li>
 							<li class=""><a data-go="#avis" title="Acheter une box gaming">Galerie</a></li>
-							
+
 						</ul>
 					</section>
 				</nav>
@@ -64,13 +64,13 @@
 
 
 					<h2 id="one" style="color:#fff;">Nos prochains matchs</h2>
-	
+
 					<div id="next-matchs">
-					<?php 
+					<?php
 					$today = date('Y-m-d');
-                            $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2, 
-                                                match.score1, match.score2,  match.date, match.heure, match.journee, match.etat from `match` 
-												INNER JOIN championnat ON championnat.id = match.championnat_id
+                            $reponse = $bdd->query('SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2,
+                                                match.score1, match.score2,  match.date, match.heure, match.journee, match.etat from `match`
+																								INNER JOIN championnat ON championnat.id = match.championnat_id
                                                 INNER JOIN equipe  as eq1 ON eq1.id = match.equipe1
                                                 INNER JOIN equipe  as eq2 ON eq2.id = match.equipe2
 
@@ -83,95 +83,54 @@
                             		<p class="journee"><?php  echo $donnees['journee'].'ème journée'; ?></p>
                             		<p class="equipes"><?php echo'<b>'.$donnees['equipe1'].' - '.$donnees['equipe2'].'</b>'; ?></p>
                     				<p class="date"><?php echo 'Le '.date("d/m/Y",strtotime($donnees['date'])) .' à '.$donnees['heure']; ?></p>
-                            		
+
                             	</div>
                             	<?php
                             }
                             $reponse->closeCursor(); // Termine le traitement de la requête
                      ?>
 					</div>
-					
+
 				</header>
 			</section>
 		</section>
 		<section id="game" style="">
 			<ul>
-				<li style="background-image:url('assets/img/championnats/u_9.jpg');">
-					<a href="ajax.php?id=1" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_11.jpg');">
-					<a href="ajax.php?id=2" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_13.jpg');">
-					<a href="ajax.php?id=3" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_15.jpg');">
-					<a href="ajax.php?id=4" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_9f.jpg');">
-					<a href="ajax.php?id=5" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_11f.jpg');">
-					<a href="ajax.php?id=6" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_13f.jpg');">
-					<a href="ajax.php?id=7" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
-				<li style="background-image:url('assets/img/championnats/u_15f.jpg');">
-					<a href="ajax.php?id=8" class="fancybox fancybox.ajax">
-						<figure>
-							<figcaption>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
+					<?php
+					$reponse = $bdd->query('SELECT id, name FROM championnat');
+					while($donnees=$reponse->fetch()){
+
+						$championnat_image = str_replace("uaff u", "u_", $donnees['name']);
+						?>
+						<li style="background-image:url('assets/img/championnats/<?php echo $championnat_image ?>.jpg');">
+							<a href="ajax.php?id=<?php echo $donnees['id'];?>" class="fancybox fancybox.ajax">
+								<figure>
+									<figcaption>
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+						<?php
+					}
+					?>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 			</ul>
 		</section>
 		<section id="chance" style="">
 			<section class="ct">
 				<h2> <span style="color:#fff;"><strong>UAFF</strong><br> est un regroupement d'associations <br>qui organise plusieurs catégories de </span><br><br><strong class="r">Championnats de Futsal</strong><br><span style="color:#fff;"><br>Ile-de-France</span></h2>
-				
+
 			</section>
 		</section>
 		<section id="comment">
 			<section class="ct">
 				<section>
-					<?php 
+					<?php
                         $query='SELECT * FROM article  WHERE active=1 and top = 1 ORDER BY id DESC LIMIT 1';
                         $reponse = $bdd->query($query);
                         while($donnees=$reponse->fetch()){
@@ -189,7 +148,7 @@
 		<section id="avis" style="">
 			<section class="ct">
 				<ul>
-					<?php 
+					<?php
                         $query='SELECT * FROM article  WHERE active=1 and top = 0 ORDER BY id DESC LIMIT 3';
                         $reponse = $bdd->query($query);
                         while($donnees=$reponse->fetch()){
@@ -202,17 +161,17 @@
                         }
                         $reponse->closeCursor(); // Termine le traitement de la requête
                     ?>
-					
+
 				</ul>
 			</section>
 		</section>
-<!-- 
+<!--
 		<section>
 			<iframe width="420" height="315"
 				src="https://www.youtube.com/embed/-yi1g17UyiI">
-			</iframe> 
+			</iframe>
 		</section> -->
-		
+
 		<footer role="footer">
 			<section class="ct">
 				<p>© <strong><?php echo date('Y');?></strong> - Tout droits réservés.</p>
@@ -221,12 +180,12 @@
 				</ul>
 			</section>
 		</footer>
-	
-		
-		
+
+
+
 		<script type="text/javascript">
 			$(document).ready(function() {
-		
+
 
 				$('.fancybox').fancybox();
 				// Change title type, overlay closing speed
@@ -272,7 +231,7 @@
 
 			}
 		</style>
-		
+
 		<!-- <script type="text/javascript" src="assets/js/jquery-3.js"></script> -->
 		<script type="text/javascript" src="assets/js/phc.js"></script>
 
