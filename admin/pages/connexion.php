@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(  !isset( $_SESSION['admin']) OR $_SESSION['admin']!='true')  {
 	header('location:../login.php');
@@ -10,7 +10,7 @@ if(  !isset( $_SESSION['admin']) OR $_SESSION['admin']!='true')  {
  try{
 
  	//Local
-	$bdd = new PDO('mysql:host=localhost;dbname=goussainville;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=uaff;charset=utf8', 'root', '31102008');
 	// Prod
 	//$bdd = new PDO('mysql:host=localhost;dbname=h4090_gv;charset=utf8', 'h4090', '5ZQI7tqN');
 
@@ -22,4 +22,3 @@ if(  !isset( $_SESSION['admin']) OR $_SESSION['admin']!='true')  {
   catch( exception $e){
     die('Message d\'erreur : '. $e->getMessage());
   }
-

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once('../configs/connexion.php');
 ?>
@@ -34,7 +34,7 @@ require_once('../configs/connexion.php');
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>
 
@@ -50,7 +50,7 @@ require_once('../configs/connexion.php');
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                
+
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -67,31 +67,31 @@ require_once('../configs/connexion.php');
                 <!-- /.row -->
 
                 <!-- /.row -->
-                 
+
                 <!-- Main content -->
                 <section class="content" style="background:#fff;padding:15px;">
                     <div class="row">
-                        <div class="col-md-8">
-                            <div class="panel-heading">     
+                        <div class="col-md-12">
+                            <div class="panel-heading">
                                 <div class="text-right">
-                                    <a href="matchs.php" class="btn btn-default"> Retour</a> 
-                                </div>  
+                                    <a href="matchs.php" class="btn btn-default"> Retour</a>
+                                </div>
                             </div>
                             <!-- Horizontal Form -->
                             <div class="box box-primary" style="min-height: 390px;">
-                            
+
                                 <div class="box-header with-border">
                                   <h3 class="box-title">Scorer un match</h3>
                                 </div><!-- /.box-header -->
-                                
+
                                 <!-- form start -->
                                 <form class="form-horizontal" method="POST" action="match-score-post.php">
                                     <div class="box-body">
-                                        <?php 
-                                        
+                                        <?php
+
                                             if(isset($_GET['id'])){
                                                  $match = $_GET['id'];
-                                                $query = 'SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2, 
+                                                $query = 'SELECT match.id, championnat.name as championnat,  eq1.name as equipe1, eq2.name as equipe2,
                                                         match.score1, match.score2,  match.date, match.heure, match.journee as journee, match.etat   from `match`
                                                         INNER JOIN championnat ON championnat.id = match.championnat_id
                                                         INNER JOIN equipe  as eq1 ON eq1.id = match.equipe1
@@ -106,7 +106,7 @@ require_once('../configs/connexion.php');
                                                 if ($donnees['journee'] == 1)$num ="ère";
                                                 echo "<h3>".$donnees['journee']." ".$num." journée du championnat : ".$donnees['championnat']."</h3>";
                                                 echo " <h5> Match joué le ".$donnees['date']." à ".$donnees['heure']."</h5>";
-                                            
+
 
                                              ?>
                                              <div class="form-group" style="width:100%;margin : 0 auto">
@@ -120,7 +120,7 @@ require_once('../configs/connexion.php');
 
                                               </div>
                                               <label for="score2" class="col-sm-3 control-label" style="text-align: left;"><?php echo $donnees['equipe2']; ?></label>
-                                            </div>  
+                                            </div>
 
 
                                             <div class="box-footer" style="text-align:center;margin-top: 30px;">
@@ -132,21 +132,21 @@ require_once('../configs/connexion.php');
                                         <?php }
                                         else{ /*===============================================================================*/
                                         ?>
-                                        
-                                
+
+
                                         <div class="form-group">
                                           <label for="championnatSelector" class="col-sm-2 control-label">Championnat</label>
                                           <div class="col-sm-4">
                                             <select  id ="championnatSelector" name="championnatSelector" class="form-control">
                                                 <option value="" disabled selected>Selectionner le championnat</option>
-                                                <?php 
+                                                <?php
                                                     $reponse = $bdd->query('SELECT * FROM championnat  ORDER BY id ASC');
-                                        
+
                                                     while($donnees=$reponse->fetch()){
                                                         echo '<option value="'.$donnees['id'].'"> '.$donnees['name'].'</option>';
                                                     }
                                                     $reponse->closeCursor(); // Termine le traitement de la requête
-                                                 ?> 
+                                                 ?>
                                             </select>
                                           </div>
                                           <div class="col-sm-5">
@@ -155,7 +155,7 @@ require_once('../configs/connexion.php');
                                             </div>
                                         </div>
                                         <div id="ajaxScore"></div>
-                                    
+
                                         <?php }?>
                                     </div>
 
@@ -167,9 +167,9 @@ require_once('../configs/connexion.php');
                         <a href="matchs.php">Retour à la liste <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
 
-                </section><!-- /.content -->           
+                </section><!-- /.content -->
 
-                
+
             </div>
             <!-- /.container-fluid -->
 
@@ -214,15 +214,15 @@ require_once('../configs/connexion.php');
                         }
                         console .log(data);
                         var options='';
-                        for(i=0;i<length;i++){   
+                        for(i=0;i<length;i++){
                             options=options+ '<option value ="'+data[i].id+'"> J: '+data[i].journee+' | '+data[i].date +' | '+data[i].heure+' | '+data[i].equipe1+' vs '+data[i].equipe2+'   </option>';
 
-                            
+
                         }
                         var selectMatch ='<select  id ="matchSelector" name="match_id" class="form-control"><option value="" disabled selected>Selectionner le match</option>'+options+'</select>';
-                       //$('#formAjax').css('display','block');    
+                       //$('#formAjax').css('display','block');
                         $('#ajaxSelectMatch').append(selectMatch);
-                        
+
 
                         /*========================SELECT Match =============================*/
                         $("#matchSelector").change(function(){
@@ -261,14 +261,14 @@ require_once('../configs/connexion.php');
 
                 });
             });
-            
 
-            
+
+
 
 
 
             /*-------------------------calendar-----------------------------------*/
-            
+
             });
 
     </script>
